@@ -1,18 +1,33 @@
+import React from "react";
 import TopBar from "./TopBar";
 import ItemList from "./ItemList";
-import Grid from "@material-ui/core/Grid";
 
-const App = () => {
-  return (
-    <Grid container spacing={3}>
-      <Grid item xs={12}>
+class App extends React.Component {
+  state = {
+    products: [
+      {
+        name: "Rusty Sword",
+        description: "Simple sword description.",
+        image: "/images/rusty_sword.png",
+        price: "5",
+      },
+      {
+        name: "Broad Sword",
+        description: "Simple sword description.",
+        image: "/images/broad_sword.png",
+        price: "25",
+      },
+    ],
+  };
+
+  render() {
+    return (
+      <div>
         <TopBar />
-      </Grid>
-      <Grid item xs={12} style={{ margin: "20px" }}>
-        <ItemList />
-      </Grid>
-    </Grid>
-  );
-};
+        <ItemList products={this.state.products} />
+      </div>
+    );
+  }
+}
 
 export default App;

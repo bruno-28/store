@@ -1,43 +1,20 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import { Image, Button } from "semantic-ui-react";
 
-const useStyles = makeStyles({
-  root: {
-    width: "100%",
-    height: "100%",
-    border: "1px solid lightblue",
-    borderRadius: "20px",
-  },
-  title: {
-    fontSize: 16,
-  },
-  description: {
-    fontSize: 12,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
-
-export default function Item() {
-  const classes = useStyles();
-
-  return (
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography class={classes.title}>Name of item</Typography>
-        <Typography>Image of item</Typography>
-        <Typography class={classes.description}>Description of item</Typography>
-        <Typography>Price of item</Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Add to cart</Button>
-      </CardActions>
-    </Card>
-  );
+class Item extends React.Component {
+  render() {
+    return (
+      <div className="ui centered card">
+        <div className="content">
+          <div className="header">{this.props.name}</div>
+          <div className="meta">{this.props.description}</div>
+          <Image src={this.props.image} size="small" />
+          <div className="meta">${this.props.price}</div>
+          <Button>Add to cart</Button>
+        </div>
+      </div>
+    );
+  }
 }
+
+export default Item;

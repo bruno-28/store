@@ -1,52 +1,50 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import React, { Component } from "react";
+import { Input, Menu } from "semantic-ui-react";
 import CartWidget from "./CartWidget";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  LoginButton: {
-    marginLeft: theme.spacing(2),
-  },
-}));
+class TopBar extends Component {
+  state = {
+    activeItem: "store",
+  };
 
-export default function ButtonAppBar() {
-  const classes = useStyles();
+  handleItemClick = (e) => this.setState({ activeItem: e.target });
 
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h5" className={classes.title}>
-            Store
-          </Typography>
-          <CartWidget />
-          <Button className={classes.LoginButton} color="inherit">
-            Login
-          </Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+  render() {
+    const { activeItem } = this.state;
+
+    return (
+      <Menu stackable size="large">
+        <Menu.Item
+          name="store"
+          active={activeItem === "store"}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name="products"
+          active={activeItem === "products"}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name="about"
+          active={activeItem === "about"}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Menu stackable position="right">
+          <Menu.Item>
+            <CartWidget />
+          </Menu.Item>
+          <Menu.Item>
+            <Input icon="search" placeholder="Search..." />
+          </Menu.Item>
+          <Menu.Item
+            name="login"
+            active={activeItem === "login"}
+            onClick={this.handleItemClick}
+          />
+        </Menu.Menu>
+      </Menu>
+    );
+  }
 }
+
+export default TopBar;
