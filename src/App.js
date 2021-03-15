@@ -17,6 +17,12 @@ class App extends React.Component {
         image: "/images/broad_sword.png",
         price: "25",
       },
+      {
+        name: "Great Sword",
+        description: "Simple sword description.",
+        image: "/images/great_sword.png",
+        price: "15",
+      },
     ],
   };
 
