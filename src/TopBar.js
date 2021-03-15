@@ -13,7 +13,7 @@ class TopBar extends Component {
     const { activeItem } = this.state;
 
     return (
-      <Menu stackable size="large">
+      <Menu stackable>
         <Menu.Item
           name="store"
           active={activeItem === "store"}
@@ -29,19 +29,17 @@ class TopBar extends Component {
           active={activeItem === "about"}
           onClick={this.handleItemClick}
         />
-        <Menu.Menu stackable position="right">
-          <Menu.Item>
-            <CartWidget />
-          </Menu.Item>
-          <Menu.Item>
-            <Input icon="search" placeholder="Search..." />
-          </Menu.Item>
-          <Menu.Item
-            name="login"
-            active={activeItem === "login"}
-            onClick={this.handleItemClick}
-          />
-        </Menu.Menu>
+        <Menu.Item position="right">
+          <CartWidget />
+        </Menu.Item>
+        <Menu.Item>
+          <Input icon="search" placeholder="Search..." />
+        </Menu.Item>
+        <Menu.Item
+          name="login"
+          active={activeItem === "login"}
+          onClick={this.handleItemClick}
+        />
       </Menu>
     );
   }
