@@ -5,6 +5,7 @@ class ItemList extends React.Component {
   render() {
     const products = this.props.products.map((product) => (
       <Item
+        id={product.id}
         name={product.name}
         description={product.description}
         image={product.image}

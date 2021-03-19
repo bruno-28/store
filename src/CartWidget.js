@@ -1,12 +1,9 @@
 import React from "react";
 import { Icon, Label } from "semantic-ui-react";
 
-const cart_size = 0;
-
-const CartWidget = () => (
+const CartWidget = ({ quantity }) => (
   <Label as="a" size="big">
-    <Icon name="shopping cart" />
-    {cart_size}
+    <Icon name="shopping cart" /> {quantity}
   </Label>
 );
 
